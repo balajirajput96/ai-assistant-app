@@ -15,6 +15,10 @@
 - [x] Audit repository state, configured integrations, workflows, and scheduled-task options.
 - [x] Reproduce and fix all project code/configuration failures found during validation.
 - [x] Validate TypeScript, lint, tests, server build, and Expo production export.
-- [ ] Rebase the GitHub branch safely and change the Atlas repository visibility to public.
+- [x] Rebase the GitHub branch safely and change the Atlas repository visibility to public.
 - [ ] Assess and configure a compliant recurring validation schedule if an approved scheduler is available.
 - [ ] Save a post-fix checkpoint and sync the final state to GitHub.
+- [x] Re-audit current GitHub Actions outcomes and unresolved dependency security alerts.
+- [x] Apply only compatible, validated dependency updates that resolve actionable alerts.
+- [x] Re-run the complete CI-equivalent suite and Android production export after all fixes.
+- [ ] Rebase final commits against GitHub main and confirm every relevant workflow run passes.
