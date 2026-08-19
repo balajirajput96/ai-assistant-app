@@ -12,3 +12,9 @@
 - [x] Generate custom app branding and update mobile icon configuration.
 - [x] Add unit tests, lint checks, and deterministic mobile-safe validation.
 - [x] Prepare Play Store listing, privacy disclosures, and GitHub handoff documentation.
+- [x] Audit repository state, configured integrations, workflows, and scheduled-task options.
+- [x] Reproduce and fix all project code/configuration failures found during validation.
+- [x] Validate TypeScript, lint, tests, server build, and Expo production export.
+- [ ] Rebase the GitHub branch safely and change the Atlas repository visibility to public.
+- [ ] Assess and configure a compliant recurring validation schedule if an approved scheduler is available.
+- [ ] Save a post-fix checkpoint and sync the final state to GitHub.
