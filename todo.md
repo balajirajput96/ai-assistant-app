@@ -21,4 +21,4 @@
 - [x] Re-audit current GitHub Actions outcomes and unresolved dependency security alerts.
 - [x] Apply only compatible, validated dependency updates that resolve actionable alerts.
 - [x] Re-run the complete CI-equivalent suite and Android production export after all fixes.
-- [ ] Rebase final commits against GitHub main and confirm every relevant workflow run passes.
+- [x] Rebase final commits against GitHub main and confirm every relevant workflow run passes.
