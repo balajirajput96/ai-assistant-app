@@ -17,8 +17,11 @@
 - [x] Validate TypeScript, lint, tests, server build, and Expo production export.
 - [x] Rebase the GitHub branch safely and change the Atlas repository visibility to public.
 - [ ] Assess and configure a compliant recurring validation schedule if an approved scheduler is available.
-- [ ] Save a post-fix checkpoint and sync the final state to GitHub.
+- [x] Save a post-fix checkpoint and sync the final state to GitHub.
 - [x] Re-audit current GitHub Actions outcomes and unresolved dependency security alerts.
 - [x] Apply only compatible, validated dependency updates that resolve actionable alerts.
 - [x] Re-run the complete CI-equivalent suite and Android production export after all fixes.
 - [x] Rebase final commits against GitHub main and confirm every relevant workflow run passes.
+- [x] Fix Express 5 route-parser regression for the Manus storage proxy path.
+- [x] Revalidate server startup, CI-equivalent checks and Android export after the route fix.
+- [ ] Save and sync the corrected post-Express-5 checkpoint state.
