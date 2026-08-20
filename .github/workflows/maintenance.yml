@@ -1,0 +1,47 @@
+name: Atlas Maintenance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Run bounded maintenance validation
+        run: bash scripts/run-maintenance.sh
+      - name: Write machine-readable execution record
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p maintenance-record
+          cat > maintenance-record/execution.json <<EOF
+          {
+            "schemaVersion": 1,
+            "repository": "${{ github.repository }}",
+            "workflow": "${{ github.workflow }}",
+            "runId": "${{ github.run_id }}",
+            "runNumber": "${{ github.run_number }}",
+            "commit": "${{ github.sha }}",
+            "ref": "${{ github.ref }}",
+            "result": "${{ job.status }}",
+            "timestamp": "$(date --utc +%Y-%m-%dT%H:%M:%SZ)",
+            "nextAction": "Inspect only failures or newly introduced alerts; do not modify validated code without evidence."
+          }
+          EOF
+      - name: Upload maintenance record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-maintenance-record-${{ github.run_id }}
+          path: maintenance-record/execution.json
+          retention-days: 100

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "mission": {
+    "name": "Atlas Engineering Continuation",
+    "maximumExecutionCycles": 2400,
+    "executionNumber": 0,
+    "status": "baseline_verified",
+    "lastUpdated": "2026-08-20T20:44:00Z"
+  },
+  "repository": {
+    "name": "balajirajput96/atlas-ai-assistant",
+    "defaultBranch": "main",
+    "visibility": "public",
+    "lastVerifiedCommit": "85ce6ce",
+    "workingTree": "changes_pending_maintenance_docs"
+  },
+  "validatedCapabilities": {
+    "local": [
+      "pnpm install",
+      "pnpm check",
+      "pnpm lint",
+      "pnpm test",
+      "pnpm build",
+      "expo android export",
+      "expo diagnostics",
+      "Express 5 storage proxy redirect smoke test"
+    ],
+    "github": [
+      "public repository access",
+      "clean rebase and push",
+      "Validate Atlas workflow"
+    ]
+  },
+  "availableTools": {
+    "git": "available",
+    "githubCli": "authenticated",
+    "googleWorkspaceCli": "installed; account selection required",
+    "mcpCli": "available",
+    "geminiCli": "not installed",
+    "antigravityCli": "not installed",
+    "julesCli": "not installed",
+    "cloudCli": "not installed"
+  },
+  "openItems": [
+    {
+      "id": "schedule-architecture-selection",
+      "priority": "high",
+      "status": "blocked_on_user_architecture_choice",
+      "detail": "Hourly maintenance must use a durable deterministic runner rather than a full AI session every hour."
+    },
+    {
+      "id": "workspace-account-selection",
+      "priority": "medium",
+      "status": "blocked_on_user_selection",
+      "detail": "Multiple authorized Google Workspace accounts exist and no active account is selected."
+    },
+    {
+      "id": "dependabot-alert-access",
+      "priority": "medium",
+      "status": "limited_by_token_scope",
+      "detail": "GitHub Dependabot alert API returned HTTP 403; local audit remains the available detailed source."
+    }
+  ],
+  "nextRun": {
+    "mode": "manual_until_schedule_confirmed",
+    "recommendedAction": "Run the repository maintenance workflow, record result, inspect only new failures, and avoid changing validated code without evidence."
+  }
+}

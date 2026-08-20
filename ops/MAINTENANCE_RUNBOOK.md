@@ -1,0 +1,28 @@
+# Atlas Engineering Maintenance Runbook
+
+## Purpose
+
+This runbook preserves a reproducible, non-destructive continuation process for the Atlas repository. Each run starts from the persisted state in `ops/maintenance-state.json`, verifies real conditions, records evidence, and changes source only when a reproducible failure or approved maintenance update requires it.
+
+## Safe run order
+
+| Step | Operation | Success condition | Failure response |
+|---|---|---|---|
+| 1 | Inspect `git status`, branch, remotes and recent commits. | Working state is understood before edits. | Stop before destructive operations; preserve uncommitted work. |
+| 2 | Install locked dependencies with `pnpm install`. | Installation completes without lockfile drift. | Record dependency/install error and diagnose only the affected package. |
+| 3 | Run `pnpm check`, `pnpm lint`, `pnpm test`, `pnpm build`, Android export and Expo diagnostics. | Every command succeeds. | Reproduce, patch narrowly, and rerun the failed check plus the full suite. |
+| 4 | Inspect the latest GitHub validation workflow. | Latest workflow conclusion is `success`. | Inspect logs, reproduce locally, fix and push only validated changes. |
+| 5 | Update `ops/maintenance-state.json` with execution number, timestamp, result and next action. | No credentials or personally sensitive content is written. | Leave the prior record intact and add only an explicit blocker. |
+| 6 | Review the diff, commit the validated change, rebase against the public `main` branch, and push. | Clean history and successful remote CI. | Resolve conflicts without reset; preserve recoverability through commits. |
+
+## Boundaries
+
+The workflow must not delete repositories, revoke credentials, alter external data, publish public content, or bypass authentication. It must not automatically merge pull requests, rotate secrets, or enable unrequested third-party connectors. Dependency alerts may be investigated locally, but framework-major updates require a compatibility validation pass.
+
+## Current validated baseline
+
+The validated baseline includes the Express 5 named-splat storage route repair, successful local verification, a public GitHub repository, and passing `Validate Atlas` workflow runs. The app configuration has passed Expo diagnostics for the installed SDK.
+
+## Schedule policy
+
+Hourly deterministic maintenance should run in a durable repository or hosted job rather than launching a full AI task every hour. The active schedule remains intentionally unconfigured until the user chooses the durable execution approach and account/connector scope where relevant.

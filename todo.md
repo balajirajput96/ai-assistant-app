@@ -25,3 +25,11 @@
 - [x] Fix Express 5 route-parser regression for the Manus storage proxy path.
 - [x] Revalidate server startup, CI-equivalent checks and Android export after the route fix.
 - [ ] Save and sync the corrected post-Express-5 checkpoint state.
+- [x] Audit historical workspace artifacts, shell history, repositories, Git state, and reusable automation.
+- [x] Inventory installed CLIs, configured connectors, authentication health, and legitimate capabilities without exposing credentials.
+- [x] Inspect Atlas GitHub history, branches, workflows, CI outcomes, and unresolved automation work.
+- [x] Create a machine-readable maintenance state record and safe engineering runbook.
+- [x] Add a repository-hosted, non-destructive maintenance workflow with validation and bounded retries.
+- [ ] Execute and validate the maintenance workflow from GitHub Actions.
+- [ ] Configure a bounded hourly continuation schedule only through an approved scheduler and record its execution state.
+- [ ] Save and synchronize the persistent-maintenance implementation and recovery trail.
