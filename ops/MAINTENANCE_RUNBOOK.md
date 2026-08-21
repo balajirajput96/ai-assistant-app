@@ -12,7 +12,7 @@ This runbook preserves a reproducible, non-destructive continuation process for 
 | 2 | Install locked dependencies with `pnpm install`. | Installation completes without lockfile drift. | Record dependency/install error and diagnose only the affected package. |
 | 3 | Run `pnpm check`, `pnpm lint`, `pnpm test`, `pnpm build`, Android export and Expo diagnostics. | Every command succeeds. | Reproduce, patch narrowly, and rerun the failed check plus the full suite. |
 | 4 | Inspect the latest GitHub validation workflow. | Latest workflow conclusion is `success`. | Inspect logs, reproduce locally, fix and push only validated changes. |
-| 5 | Update `ops/maintenance-state.json` with execution number, timestamp, result and next action. | No credentials or personally sensitive content is written. | Leave the prior record intact and add only an explicit blocker. |
+| 5 | Every scheduled run writes a machine-readable execution artifact; after that artifact is inspected, update `ops/maintenance-state.json` with the verified cycle, timestamp, result and next action. | Each cycle has durable non-secret evidence, and the persisted summary never claims an unverified run. | Leave the prior record intact and add only an explicit blocker. |
 | 6 | Review the diff, commit the validated change, rebase against the public `main` branch, and push. | Clean history and successful remote CI. | Resolve conflicts without reset; preserve recoverability through commits. |
 
 ## Boundaries

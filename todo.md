@@ -57,3 +57,8 @@
 - [x] Audit reusable terminal and repository history into a redacted, non-secret provenance inventory.
 - [x] Strengthen scheduled GitHub and available-CLI health checks without storing credentials in source control or logs.
 - [x] Execute and validate the secret-safe maintenance workflow, then synchronize its evidence and checkpoint.
+
+- [x] Re-audit the current persisted Atlas state, GitHub workflow evidence, remotes and active maintenance horizon.
+- [x] Classify newly observed maintenance gaps and explicitly retain user-dependent authorization blockers.
+- [x] Apply only evidence-backed, reversible maintenance improvements that preserve credential-safety boundaries.
+- [ ] Re-run local and GitHub validation, persist the resulting execution evidence, and checkpoint the renewed continuation state.
