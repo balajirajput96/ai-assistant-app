@@ -16,7 +16,7 @@
 - [x] Reproduce and fix all project code/configuration failures found during validation.
 - [x] Validate TypeScript, lint, tests, server build, and Expo production export.
 - [x] Rebase the GitHub branch safely and change the Atlas repository visibility to public.
-- [ ] Assess and configure a compliant recurring validation schedule if an approved scheduler is available.
+- [x] Assess and configure a compliant recurring validation schedule if an approved scheduler is available.
 - [x] Save a post-fix checkpoint and sync the final state to GitHub.
 - [x] Re-audit current GitHub Actions outcomes and unresolved dependency security alerts.
 - [x] Apply only compatible, validated dependency updates that resolve actionable alerts.
@@ -24,15 +24,15 @@
 - [x] Rebase final commits against GitHub main and confirm every relevant workflow run passes.
 - [x] Fix Express 5 route-parser regression for the Manus storage proxy path.
 - [x] Revalidate server startup, CI-equivalent checks and Android export after the route fix.
-- [ ] Save and sync the corrected post-Express-5 checkpoint state.
+- [x] Save and sync the corrected post-Express-5 checkpoint state.
 - [x] Audit historical workspace artifacts, shell history, repositories, Git state, and reusable automation.
 - [x] Inventory installed CLIs, configured connectors, authentication health, and legitimate capabilities without exposing credentials.
 - [x] Inspect Atlas GitHub history, branches, workflows, CI outcomes, and unresolved automation work.
 - [x] Create a machine-readable maintenance state record and safe engineering runbook.
 - [x] Add a repository-hosted, non-destructive maintenance workflow with validation and bounded retries.
 - [x] Execute and validate the maintenance workflow from GitHub Actions.
-- [ ] Configure a bounded hourly continuation schedule only through an approved scheduler and record its execution state.
-- [ ] Save and synchronize the persistent-maintenance implementation and recovery trail.
+- [x] Configure a bounded hourly continuation schedule only through an approved scheduler and record its execution state.
+- [x] Save and synchronize the persistent-maintenance implementation and recovery trail.
 
 - [x] Recover the validated maintenance workflow, inventory and runbook from the public Atlas repository after workspace reset.
 - [x] Record option B automation policy, the 2,400-cycle bound, and pending daily AI-review time.
