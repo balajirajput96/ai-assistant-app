@@ -48,7 +48,12 @@ jobs:
           node-version: 22
           cache: pnpm
       - name: Run bounded maintenance validation
+        id: validation
         if: steps.horizon.outputs.within_window == 'true'
+        env:
+          # GitHub-hosted runs do not receive personal Google Workspace sessions.
+          # A selected account may opt into the same read-only check in a secure local runner.
+          ATLAS_GWS_HEALTH_CHECK: "false"
         run: bash scripts/run-maintenance.sh
       - name: Write machine-readable execution record
         if: always()
@@ -70,11 +75,12 @@ jobs:
             "maintenanceStartUtc": "${{ env.MAINTENANCE_START_UTC }}",
             "maintenanceEndUtc": "${{ env.MAINTENANCE_END_UTC }}",
             "validationStatus": "${{ job.status }}",
+            "googleWorkspaceHealth": "${{ steps.validation.outputs.google_workspace_health || 'not-executed' }}",
             "failureCategory": "none_or_recorded_in_workflow_logs",
             "recoveryAttempt": 0,
-            "remainingBlocker": "Daily AI review time remains user-selected; deterministic maintenance has no implicit external actions.",
+            "remainingBlocker": "Daily AI review time and Google Workspace account selection remain user-selected; deterministic maintenance has no implicit external actions.",
             "timestamp": "$(date --utc +%Y-%m-%dT%H:%M:%SZ)",
-            "nextAction": "Inspect only failures or newly introduced alerts; do not modify validated code without evidence."
+            "nextAction": "Inspect only failures or newly introduced alerts; run the Google Workspace check only after explicit account selection."
           }
           EOF
       - name: Upload maintenance record

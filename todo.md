@@ -52,3 +52,8 @@
 - [x] Refresh GitHub, repository, CLI and connector health evidence without exposing credentials.
 - [x] Implement only reproducible, non-destructive automation gaps identified by the refreshed audit.
 - [x] Run local and GitHub validation for any confirmed remediation, then update the persistent record.
+
+- [x] Document the authorized automation scope, explicit credential-safety boundaries, and prohibited bypass/exfiltration actions.
+- [x] Audit reusable terminal and repository history into a redacted, non-secret provenance inventory.
+- [x] Strengthen scheduled GitHub and available-CLI health checks without storing credentials in source control or logs.
+- [ ] Execute and validate the secret-safe maintenance workflow, then synchronize its evidence and checkpoint.

@@ -17,7 +17,7 @@ This runbook preserves a reproducible, non-destructive continuation process for 
 
 ## Boundaries
 
-The workflow must not delete repositories, revoke credentials, alter external data, publish public content, or bypass authentication. It must not automatically merge pull requests, rotate secrets, or enable unrequested third-party connectors. Dependency alerts may be investigated locally, but framework-major updates require a compatibility validation pass.
+The workflow must not delete repositories, revoke credentials, alter external data, publish public content, or bypass authentication. It must not automatically merge pull requests, rotate secrets, or enable unrequested third-party connectors. Dependency alerts may be investigated locally, but framework-major updates require a compatibility validation pass. The detailed authorization, preservation and credential-handling contract is maintained in [`ops/AUTOMATION_SCOPE.md`](AUTOMATION_SCOPE.md).
 
 ## Current validated baseline
 
@@ -25,4 +25,4 @@ The validated baseline includes the Express 5 named-splat storage route repair, 
 
 ## Schedule policy
 
-Hourly deterministic maintenance should run in a durable repository or hosted job rather than launching a full AI task every hour. The active schedule remains intentionally unconfigured until the user chooses the durable execution approach and account/connector scope where relevant.
+Hourly deterministic maintenance runs through the repository-hosted **Atlas Maintenance** workflow. Its policy is bounded to 2,400 cycles from the persisted start and end timestamps in `ops/maintenance-state.json`; the workflow stops after the fixed horizon. A separate daily AI review remains disabled until the user selects its local time and timezone. Google Workspace checks remain disabled until the user selects one authorized account.

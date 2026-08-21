@@ -24,3 +24,16 @@ Git, GitHub CLI, Google Workspace CLI and MCP CLI are installed. GitHub CLI auth
 ## Preservation rule
 
 This inventory is evidence-based. It records only artifacts and capabilities observed during the audit; it does not represent a claim that unobserved repositories, previous terminal commands, disabled connectors, or unavailable CLIs were recovered or operational.
+
+## Follow-up redacted audit
+
+The follow-up audit checked only safe metadata. No readable Bash history file was present, so no raw commands, arguments, session data or credentials were recovered, copied or retained. The active Atlas worktree, public repository remote names and recent Git history were observed only to establish recoverable provenance.
+
+| Evidence category | Observed result | Preservation decision |
+| --- | --- | --- |
+| Raw terminal history | No readable `.bash_history` file was present. | Retain no inferred history and no command content. |
+| Verified CLI presence | `git`, `gh`, `gws` and `manus-mcp-cli` were installed; Gemini, Antigravity and Jules were not installed. | Preserve availability only; do not create a dependency on unavailable CLIs. |
+| GitHub authentication | GitHub CLI completed a non-disclosing authentication status check. | Record only `authenticated`; never store account identity, token, cookie or status output. |
+| Project recovery trail | Recent commits and configured remote names confirmed the Atlas project recovery path. | Preserve through version-controlled project state and GitHub history, not terminal transcripts. |
+
+The audit did not attempt to access connector secrets, browser sessions, OAuth refresh material, API keys or account passwords. This exclusion is deliberate and is governed by [`ops/AUTOMATION_SCOPE.md`](AUTOMATION_SCOPE.md).
