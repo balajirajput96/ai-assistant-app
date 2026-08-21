@@ -4,15 +4,16 @@
     "name": "Atlas Engineering Continuation",
     "maximumExecutionCycles": 2400,
     "executionNumber": 0,
-    "status": "baseline_verified",
-    "lastUpdated": "2026-08-20T20:44:00Z"
+    "status": "hourly_validation_scheduled",
+    "maintenanceEndUtc": "2026-11-29T01:26:55Z",
+    "lastUpdated": "2026-08-21T01:26:55Z"
   },
   "repository": {
     "name": "balajirajput96/atlas-ai-assistant",
     "defaultBranch": "main",
     "visibility": "public",
-    "lastVerifiedCommit": "85ce6ce",
-    "workingTree": "changes_pending_maintenance_docs"
+    "lastVerifiedCommit": "9367fbe",
+    "workingTree": "option_b_automation_changes_pending_validation"
   },
   "validatedCapabilities": {
     "local": [
@@ -28,7 +29,8 @@
     "github": [
       "public repository access",
       "clean rebase and push",
-      "Validate Atlas workflow"
+      "Validate Atlas workflow",
+      "Atlas Maintenance workflow dispatch"
     ]
   },
   "availableTools": {
@@ -43,10 +45,10 @@
   },
   "openItems": [
     {
-      "id": "schedule-architecture-selection",
+      "id": "daily-ai-review-time",
       "priority": "high",
-      "status": "blocked_on_user_architecture_choice",
-      "detail": "Hourly maintenance must use a durable deterministic runner rather than a full AI session every hour."
+      "status": "blocked_on_user_time_selection",
+      "detail": "The daily AI review continuation is prepared but requires a user-selected local time before scheduling."
     },
     {
       "id": "workspace-account-selection",
@@ -62,7 +64,7 @@
     }
   ],
   "nextRun": {
-    "mode": "manual_until_schedule_confirmed",
-    "recommendedAction": "Run the repository maintenance workflow, record result, inspect only new failures, and avoid changing validated code without evidence."
+    "mode": "github_hourly_validation_until_maintenance_end",
+    "recommendedAction": "Run deterministic hourly validation through GitHub Actions until the fixed horizon; schedule daily AI review only after its local time is selected."
   }
 }

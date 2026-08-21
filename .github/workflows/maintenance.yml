@@ -2,6 +2,11 @@ name: Atlas Maintenance
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+env:
+  MAINTENANCE_END_UTC: "2026-11-29T01:26:55Z"
 
 permissions:
   contents: read
@@ -11,13 +16,30 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      - name: Check bounded maintenance window
+        id: horizon
+        shell: bash
+        run: |
+          now_epoch="$(date -u +%s)"
+          end_epoch="$(date -u -d "${MAINTENANCE_END_UTC}" +%s)"
+          if [[ "${{ github.event_name }}" != "schedule" || "$now_epoch" -lt "$end_epoch" ]]; then
+            echo "within_window=true" >> "$GITHUB_OUTPUT"
+            echo "Maintenance validation is within the approved window."
+          else
+            echo "within_window=false" >> "$GITHUB_OUTPUT"
+            echo "Maintenance horizon has ended; skipping scheduled validation."
+          fi
       - uses: actions/checkout@v4
+        if: steps.horizon.outputs.within_window == 'true'
       - uses: pnpm/action-setup@v4
+        if: steps.horizon.outputs.within_window == 'true'
       - uses: actions/setup-node@v4
+        if: steps.horizon.outputs.within_window == 'true'
         with:
           node-version: 22
           cache: pnpm
       - name: Run bounded maintenance validation
+        if: steps.horizon.outputs.within_window == 'true'
         run: bash scripts/run-maintenance.sh
       - name: Write machine-readable execution record
         if: always()
@@ -31,8 +53,11 @@ jobs:
             "workflow": "${{ github.workflow }}",
             "runId": "${{ github.run_id }}",
             "runNumber": "${{ github.run_number }}",
+            "trigger": "${{ github.event_name }}",
             "commit": "${{ github.sha }}",
             "ref": "${{ github.ref }}",
+            "withinMaintenanceWindow": "${{ steps.horizon.outputs.within_window }}",
+            "maintenanceEndUtc": "${{ env.MAINTENANCE_END_UTC }}",
             "result": "${{ job.status }}",
             "timestamp": "$(date --utc +%Y-%m-%dT%H:%M:%SZ)",
             "nextAction": "Inspect only failures or newly introduced alerts; do not modify validated code without evidence."
