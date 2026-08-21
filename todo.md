@@ -35,8 +35,8 @@
 - [ ] Save and synchronize the persistent-maintenance implementation and recovery trail.
 
 - [x] Recover the validated maintenance workflow, inventory and runbook from the public Atlas repository after workspace reset.
-- [ ] Record option B automation policy, the 2,400-cycle bound, and pending daily AI-review time.
-- [ ] Add the GitHub hourly maintenance trigger with a date-based 2,400-cycle expiration guard.
-- [ ] Prepare a daily AI-review continuation prompt and persistent execution-state update path.
-- [ ] Execute and validate the updated GitHub maintenance automation.
+- [x] Record option B automation policy, the 2,400-cycle bound, and pending daily AI-review time.
+- [x] Add the GitHub hourly maintenance trigger with a date-based 2,400-cycle expiration guard.
+- [x] Prepare a daily AI-review continuation prompt and persistent execution-state update path.
+- [x] Execute and validate the updated GitHub maintenance automation.
 - [ ] Save and synchronize the bounded automation implementation and checkpoint.
