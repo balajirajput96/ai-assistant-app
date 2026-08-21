@@ -30,6 +30,13 @@
 - [x] Inspect Atlas GitHub history, branches, workflows, CI outcomes, and unresolved automation work.
 - [x] Create a machine-readable maintenance state record and safe engineering runbook.
 - [x] Add a repository-hosted, non-destructive maintenance workflow with validation and bounded retries.
-- [ ] Execute and validate the maintenance workflow from GitHub Actions.
+- [x] Execute and validate the maintenance workflow from GitHub Actions.
 - [ ] Configure a bounded hourly continuation schedule only through an approved scheduler and record its execution state.
 - [ ] Save and synchronize the persistent-maintenance implementation and recovery trail.
+
+- [x] Recover the validated maintenance workflow, inventory and runbook from the public Atlas repository after workspace reset.
+- [ ] Record option B automation policy, the 2,400-cycle bound, and pending daily AI-review time.
+- [ ] Add the GitHub hourly maintenance trigger with a date-based 2,400-cycle expiration guard.
+- [ ] Prepare a daily AI-review continuation prompt and persistent execution-state update path.
+- [ ] Execute and validate the updated GitHub maintenance automation.
+- [ ] Save and synchronize the bounded automation implementation and checkpoint.
