@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas maintenance execution record",
+  "type": "object",
+  "required": [
+    "repository",
+    "workflow",
+    "runId",
+    "trigger",
+    "executionNumber",
+    "timestamp",
+    "validationStatus",
+    "recoveryAttempt",
+    "remainingBlocker",
+    "nextAction"
+  ],
+  "properties": {
+    "repository": { "type": "string" },
+    "workflow": { "type": "string" },
+    "runId": { "type": "string" },
+    "trigger": { "enum": ["schedule", "workflow_dispatch"] },
+    "executionNumber": { "type": ["string", "integer"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "validationStatus": { "type": "string" },
+    "failureCategory": { "type": "string" },
+    "recoveryAttempt": { "type": "integer", "minimum": 0 },
+    "remainingBlocker": { "type": "string" },
+    "nextAction": { "type": "string" }
+  },
+  "additionalProperties": true
+}

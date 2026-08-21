@@ -40,3 +40,10 @@
 - [x] Prepare a daily AI-review continuation prompt and persistent execution-state update path.
 - [x] Execute and validate the updated GitHub maintenance automation.
 - [ ] Save and synchronize the bounded automation implementation and checkpoint.
+
+- [ ] Reconcile the expanded persistent mission with the existing Atlas maintenance runbook and machine-readable state.
+- [ ] Verify the restored GitHub schedule, latest maintenance run, and current 2,400-hour horizon after deployment.
+- [ ] Identify remaining non-destructive health-check gaps and document only actionable findings.
+- [ ] Extend the GitHub maintenance execution artifact with explicit cycle, validation, recovery and blocker fields.
+- [ ] Configure the daily AI review when the user supplies a review time, or retain the explicit safe fallback.
+- [ ] Validate, synchronize and checkpoint any confirmed continuation changes.

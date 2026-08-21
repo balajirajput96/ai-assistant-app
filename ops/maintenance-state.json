@@ -5,7 +5,8 @@
     "maximumExecutionCycles": 2400,
     "executionNumber": 0,
     "status": "hourly_validation_scheduled",
-    "maintenanceEndUtc": "2026-11-29T01:26:55Z",
+    "scheduledStartUtc": "2026-08-21T02:00:00Z",
+    "maintenanceEndUtc": "2026-11-29T02:00:00Z",
     "lastUpdated": "2026-08-21T01:26:55Z"
   },
   "repository": {
@@ -64,7 +65,7 @@
     }
   ],
   "nextRun": {
-    "mode": "github_hourly_validation_until_maintenance_end",
+    "mode": "github_hourly_validation_for_up_to_2400_scheduled_cycles",
     "recommendedAction": "Run deterministic hourly validation through GitHub Actions until the fixed horizon; schedule daily AI review only after its local time is selected."
   }
 }
