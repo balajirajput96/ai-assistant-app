@@ -1,0 +1,19 @@
+{
+  "project": "Orbit",
+  "maxCycles": 2400,
+  "mode": "diagnostics-first",
+  "retryPolicy": {
+    "maxValidationRetries": 1,
+    "dependencyRepair": "pnpm install --frozen-lockfile"
+  },
+  "validationCommands": [
+    { "name": "lint", "command": "pnpm", "args": ["lint"] },
+    { "name": "typecheck", "command": "pnpm", "args": ["check"] },
+    { "name": "tests", "command": "pnpm", "args": ["test"] }
+  ],
+  "publication": {
+    "automaticPush": false,
+    "automaticDeploy": false,
+    "reason": "Repository publication and deployment remain explicit, reviewable operations."
+  }
+}
